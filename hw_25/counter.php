@@ -1,12 +1,21 @@
-protected static $counter;
-public $data;
+<?php
+
+class StaticTest
+{
+	// protected static $counter;
+	public $data;
+
+	protected static $instance;
 	
 	private function __construct() {
-		var_dump(StaticTest::$counter);
+		// var_dump(StaticTest::$counter);
 	}
 
-	public static function getInstance() {if ($this->instance != undefined){$this->instance = new Counter()}
-		
+	public static function getInstance() {
+		if (!self::$instance) {
+			self::$instance = new StaticTest();
+		}
+		return self::$instance;
 	}
 }
 
@@ -18,4 +27,4 @@ var_dump($st2->data);//должен вывести 4
 
 $st3 = StaticTest::getInstance();
 $st3->data = 8;
-var_dump($st1->data);//Должно вывести 8, $st1 и $st3 - один и тот же объект 
+var_dump($st1->data);//Должно вывести 8, $st1 и $st3 - один и тот же объект
