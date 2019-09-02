@@ -39,23 +39,23 @@ public function current() {
 		return $this->currentNode;
 	}
 
-	public function hasNext() {
+	public function valid() {
 		return !empty($this->currentNode);
 	}
 
-	public function getNext() {
+	public function current() {
 		$result = $this->currentNode;
-		$this->currentNode = $this->currentNode->next;
 		return $result;
 	}
 
+    public function next(){
+    	$this->currentNode = $this->currentNode->next;
+    }
+	
 	public function rewind() {
 		$this->currentNode = $this->start;
 	}
-	public function valid() {
-		// var_dump('valid called');
-		return isset($this->currentNode[$this->start]);
-	}
+	
 }
 
 $myList = new MyList();
