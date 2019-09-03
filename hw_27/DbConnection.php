@@ -9,7 +9,7 @@ class Connection
 	protected $pdo;
 
 	protected function __construct() {
-		$dsn = 'mysql:host=localhost;dbname=models_php10';
+		$dsn = 'mysql:host=localhost;dbname=eav';
 		$login = 'root';
 		$password = '';
 		$this->pdo = new PDO($dsn, $login, $password);
